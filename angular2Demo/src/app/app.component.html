@@ -1,0 +1,31 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<input type="text" name="name" [(ngModel)]="newname"><br><br>
+<child [name]='newname'></child>
+<br>
+<p> You have selected {{newEmp.name}}</p>
+<p>HIs location is {{newEmp.location}}</p>
+<p>His or Her email is {{newEmp.email}}</p>
+<p>His or her Follower is {{newEmp.followers}}</p>
+<br><br>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Login</th>
+    <th>Avator</th>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let emp of employee">
+        <td>{{emp.id}}</td>
+        <td>{{emp.login}}</td>
+        <td><img src="{{emp.avatar_url}}" style="height:50px; width: 50px" (click)="getExtraInfo(emp)"></td>
+    </tr>
+     <tr *ngIf="!employee">
+         {{statusMessage}} 
+      </tr>
+  </tbody>
+  </table>
+
+
