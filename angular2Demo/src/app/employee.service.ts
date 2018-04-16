@@ -18,15 +18,14 @@ export class EmployeeService{
   }
 
 // this id the one that is needed
-  getEmployees(): Observable<IEmployee[]> {    return this._http.get("https://api.github.com/users?access_token=2135501e511afe5ef0ed9866e31bd15f325bab7f")
+  getEmployees(): Observable<IEmployee[]> {    return this._http.get("https://api.github.com/users")
                       .map((response: Response) =>
                        <IEmployee[]>response.json())
                        .catch(this.handleError);
   }
 
   getEmployeeById(empCode:number): Promise<any> {
-    return this._http.get("https://api.github.com/users/"+ empCode +
-    "?access_token=2135501e511afe5ef0ed9866e31bd15f325bab7f")
+    return this._http.get("https://api.github.com/users/"+ empCode)
             .map((response: Response) => <any>response.json())
             .toPromise()
             .catch(this.handlePromiseError);
